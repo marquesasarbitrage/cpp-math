@@ -1,2 +1,4 @@
 # cpp-math
-C++ Math library 
+C++ math library 
+
+Dependencies : Eigen 
