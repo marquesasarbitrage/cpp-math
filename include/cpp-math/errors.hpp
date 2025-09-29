@@ -20,20 +20,23 @@ namespace MathErrorRegistry
     {
         class WrongVectorSizeError final: public MathLibraryError
         {
-            public:
-                explicit WrongVectorSizeError(){};
-                virtual ~WrongVectorSizeError() = default;
             protected: 
                 std::string getErrorMessage() const override; 
         };
 
         class OutOfRangeCurveInterpolationError final: public MathLibraryError
         {
-            public:
-                explicit OutOfRangeCurveInterpolationError(){};
-                virtual ~OutOfRangeCurveInterpolationError() = default;
             protected: 
                 std::string getErrorMessage() const override; 
         };
     };
-}
+
+    namespace Optim 
+    {
+        class NewtonRaphsonDerivativeZeroError final: public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+    };
+};

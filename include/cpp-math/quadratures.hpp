@@ -10,6 +10,7 @@ class GaussianQuadrature
         GaussianQuadrature(int points); 
         virtual ~GaussianQuadrature() = default;
         
+
         int getPoints() const;
         double integrate(const std::function<double(double)>& f);
         std::vector<double> getRoots();
@@ -17,12 +18,13 @@ class GaussianQuadrature
         bool isComputed() const;
 
         void setPoints(int points); 
+        void compute(); 
 
     protected: 
         void setWeigts(std::vector<double> weights); 
         void setRoots(std::vector<double> roots); 
         void setIsCompute(bool value);
-        virtual void compute() = 0;
+        virtual void _compute() = 0;
 
     private:
         int points_;
@@ -37,7 +39,7 @@ class GaussLaguerreQuadrature final: public GaussianQuadrature
         GaussLaguerreQuadrature(int points); 
         ~GaussLaguerreQuadrature() = default;
     protected: 
-        void compute() override;
+        void _compute() override;
 
 };
 

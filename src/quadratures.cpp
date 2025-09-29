@@ -20,40 +20,43 @@ void GaussianQuadrature::setWeigts(std::vector<double> weights){weights_ = weigh
 void GaussianQuadrature::setRoots(std::vector<double> roots){roots_ = roots;}
 void GaussianQuadrature::setIsCompute(bool value){computed_ = value;}
 
-GaussLaguerreQuadrature::GaussLaguerreQuadrature(int points): GaussianQuadrature(points){compute();}
-
-void GaussLaguerreQuadrature::compute()
+void GaussianQuadrature::compute()
 {
     if (!isComputed()){
-        int points = getPoints();
-        Eigen::MatrixXd J = Eigen::MatrixXd::Zero(points, points);
+        _compute(); 
+        setIsCompute(true); 
+    }
+}
 
-        for (int k = 0; k < points; k++)
-        {
-            J(k, k) = 2.0 * k + 1.0;
-        }
+GaussLaguerreQuadrature::GaussLaguerreQuadrature(int points): GaussianQuadrature(points){compute();}
 
-        for (int k = 0; k < points - 1; k++)
-        {
-            double b = k + 1.0;
-            J(k, k + 1) = b;
-            J(k + 1, k) = b;
-        }
+void GaussLaguerreQuadrature::_compute()
+{
+    int points = getPoints();
+    Eigen::MatrixXd J = Eigen::MatrixXd::Zero(points, points);
 
-        Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> solver(J);
-        Eigen::VectorXd roots = solver.eigenvalues();
-        std::vector<double> weights(points);
-        Eigen::MatrixXd V = solver.eigenvectors();
-        for (int i = 0; i < points; i++)
-        {
-            weights[i] = std::pow(V(0, i), 2);
-        }
-        setWeigts(weights); 
-        setRoots(std::vector<double>(roots.data(), roots.data() + roots.size()));
-        setIsCompute(true);
-
+    for (int k = 0; k < points; k++)
+    {
+        J(k, k) = 2.0 * k + 1.0;
     }
 
+    for (int k = 0; k < points - 1; k++)
+    {
+        double b = k + 1.0;
+        J(k, k + 1) = b;
+        J(k + 1, k) = b;
+    }
+
+    Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> solver(J);
+    Eigen::VectorXd roots = solver.eigenvalues();
+    std::vector<double> weights(points);
+    Eigen::MatrixXd V = solver.eigenvectors();
+    for (int i = 0; i < points; i++)
+    {
+        weights[i] = std::pow(V(0, i), 2);
+    }
+    setWeigts(weights); 
+    setRoots(std::vector<double>(roots.data(), roots.data() + roots.size()));
 }
 
 

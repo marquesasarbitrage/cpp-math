@@ -3,3 +3,6 @@ target_link_libraries(test1 PUBLIC cpp-math)
 
 add_executable(test2 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test2.cpp)
 target_link_libraries(test2 PUBLIC cpp-math)
+
+add_executable(test3 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test3.cpp)
+target_link_libraries(test3 PUBLIC cpp-math)
