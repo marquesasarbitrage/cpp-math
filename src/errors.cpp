@@ -20,4 +20,10 @@ namespace MathErrorRegistry
     {
         std::string NewtonRaphsonDerivativeZeroError::getErrorMessage() const {return "The derivative value in the Newton-Raphson optimizer is getting close to zero which makes the optimizer unstable.";}
     };
+
+    namespace Probability
+    {
+        std::string InvalidUniformBoundError::getErrorMessage() const {return "The bounds given for the Uniform distribution are invalid (b>a is the condition)";}
+        std::string InvalidSigmaGaussianError::getErrorMessage() const {return "Sigma parameter must be a positive value";}
+    }
 }

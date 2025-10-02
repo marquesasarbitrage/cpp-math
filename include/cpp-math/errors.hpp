@@ -39,4 +39,19 @@ namespace MathErrorRegistry
                 std::string getErrorMessage() const override; 
         };
     };
+
+    namespace Probability
+    {
+        class InvalidUniformBoundError final: public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+
+        class InvalidSigmaGaussianError final: public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+    }
 };
