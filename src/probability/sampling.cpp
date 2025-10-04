@@ -1,7 +1,7 @@
 #include "../../include/cpp-math/probability/sampling.hpp"
 
 RandomSampling::RandomSampling(const std::shared_ptr<ProbabilityDistribution>& dist, int N, int M): 
-dist_(dist), N_(std::max(std::abs(N),1)), M_(std::max(std::abs(M),1)), timeTaken_(0.0), sample_(Eigen::MatrixXd::Zero(N_,M_)) {}
+executed_(false),dist_(dist), N_(std::max(std::abs(N),1)), M_(std::max(std::abs(M),1)), timeTaken_(0.0), sample_(Eigen::MatrixXd::Zero(N_,M_)) {}
 
 void RandomSampling::run()
 {
@@ -10,22 +10,26 @@ void RandomSampling::run()
     _run();
     auto end = std::chrono::high_resolution_clock::now(); 
     timeTaken_ = std::chrono::duration<double>(end - start).count();
+    executed_ = true;
 }
 
+bool RandomSampling::isExecuted() const {return executed_;}
 int RandomSampling::getN() const{return N_;}
 int RandomSampling::getM() const{return M_;} 
 double RandomSampling::getTimeTaken() const{return timeTaken_;}
-Eigen::MatrixXd RandomSampling::getSample() const {return sample_;}
+Eigen::MatrixXd RandomSampling::getSample() {if (!executed_) run(); return sample_;}
 std::shared_ptr<ProbabilityDistribution> RandomSampling::getDistribution() const{return dist_;}
-double RandomSampling::getSampleMean() const {return sample_.mean();}
-double RandomSampling::getSampleVariance() const
+double RandomSampling::getSampleMean() {if (!executed_) run(); return sample_.mean();}
+double RandomSampling::getSampleVariance() 
 {
+    if (!executed_) run();
     double mean = sample_.mean();
     Eigen::ArrayXd centered = sample_.array() - mean;
     return (centered.square().sum()) / (sample_.size() - 1);
 }
-double RandomSampling::getSampleSkewness() const
+double RandomSampling::getSampleSkewness()
 {
+    if (!executed_) run();
     int n = sample_.size();
     double mean = sample_.mean();
     Eigen::ArrayXd centered = sample_.array() - mean;
@@ -33,8 +37,9 @@ double RandomSampling::getSampleSkewness() const
     double m3 = (centered.pow(3)).mean();
     return m3 / std::pow(m2, 1.5);
 }
-double RandomSampling::getSampleKurtosis() const
+double RandomSampling::getSampleKurtosis()
 {
+    if (!executed_) run();
     int n = sample_.size();
     double mean = sample_.mean();
     Eigen::ArrayXd centered = sample_.array() - mean;
@@ -47,9 +52,9 @@ void RandomSampling::setSample(const Eigen::MatrixXd& sample) {sample_ = sample;
 
 
 UniformSampling::UniformSampling(std::shared_ptr<Uniform> uniform, int N, int M): 
-RandomSampling(uniform,N,M), cuniform_(uniform->getLowerBound(), uniform->getUpperBound()), gen_(std::random_device{}()) {run();}
+RandomSampling(uniform,N,M), cuniform_(uniform->getLowerBound(), uniform->getUpperBound()), gen_(std::random_device{}()) {}
 UniformSampling::UniformSampling(int N, int M): 
-RandomSampling(std::make_shared<Uniform>(),N,M), cuniform_(0.0,1.0), gen_(std::random_device{}()){run();}
+RandomSampling(std::make_shared<Uniform>(),N,M), cuniform_(0.0,1.0), gen_(std::random_device{}()){}
 
 void UniformSampling::_run()
 {
@@ -61,8 +66,8 @@ namespace GaussianSampling
     Base::Base(std::shared_ptr<Gaussian> gaussian, int N, int M): RandomSampling(gaussian,N,M){};
     Base::Base(int N, int M): RandomSampling(std::make_shared<Gaussian>(),N,M){}; 
 
-    Inverse::Inverse(std::shared_ptr<Gaussian> gaussian, int N, int M): Base(gaussian,N,M){run();};
-    Inverse::Inverse(int N, int M): Base(std::make_shared<Gaussian>(),N,M){run();}; 
+    Inverse::Inverse(std::shared_ptr<Gaussian> gaussian, int N, int M): Base(gaussian,N,M){};
+    Inverse::Inverse(int N, int M): Base(std::make_shared<Gaussian>(),N,M){}; 
 
     void Inverse::_run()
     {

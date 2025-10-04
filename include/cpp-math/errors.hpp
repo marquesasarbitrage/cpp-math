@@ -54,4 +54,38 @@ namespace MathErrorRegistry
                 std::string getErrorMessage() const override; 
         };
     }
+
+    namespace Loss
+    {
+        class MismatchVectorSizeError final: public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+
+        class EmptyVectorError final: public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+
+    }
+
+    namespace Tools 
+    {
+        class InvalidMatrixSize final: public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+    }
+
+    namespace Regression 
+    {
+        class MismatchTargetFeaturesSizeError final : public MathLibraryError
+        {
+            protected: 
+                std::string getErrorMessage() const override; 
+        };
+    }
 };

@@ -4,20 +4,17 @@ Optimizer::Optimizer(): optimized_(false), toleranceThreshold_(1e-9), maximumIte
 
 void Optimizer::optimize()
 {
-    if (!optimized_)
-    {
-        auto start = std::chrono::high_resolution_clock::now();
-        try{
-            _optimize();
-        } catch (const std::exception& e){
-            optimizeError = std::current_exception(); 
-        }
-        
-        auto end = std::chrono::high_resolution_clock::now();
-        optimized_ = true;
-        std::chrono::duration<double> elapsed = end - start;
-        timeTaken_ = elapsed.count();
+    auto start = std::chrono::high_resolution_clock::now();
+    try{
+        _optimize();
+    } catch (const std::exception& e){
+        optimizeError = std::current_exception(); 
     }
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    optimized_ = true;
+    std::chrono::duration<double> elapsed = end - start;
+    timeTaken_ = elapsed.count();
 }
 
 void Optimizer::setOptimized(bool value){optimized_ = value;}

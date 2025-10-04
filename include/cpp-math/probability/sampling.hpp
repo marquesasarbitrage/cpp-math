@@ -16,17 +16,19 @@ class RandomSampling
         int getN() const; 
         int getM() const; 
         double getTimeTaken() const; 
-        Eigen::MatrixXd getSample() const; 
-        double getSampleMean() const; 
-        double getSampleVariance() const; 
-        double getSampleSkewness() const; 
-        double getSampleKurtosis() const; 
+        Eigen::MatrixXd getSample(); 
+        double getSampleMean(); 
+        double getSampleVariance(); 
+        double getSampleSkewness(); 
+        double getSampleKurtosis(); 
+        bool isExecuted() const; 
 
     protected: 
         virtual void _run() = 0; 
         void setSample(const Eigen::MatrixXd& sample);
 
     private: 
+        bool executed_; 
         const std::shared_ptr<ProbabilityDistribution> dist_;
         const int N_; const int M_; 
         double timeTaken_; 

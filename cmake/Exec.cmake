@@ -17,3 +17,7 @@ target_link_libraries(test4 PUBLIC cpp-math)
 # Sampling distribution tests
 add_executable(test5 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test5.cpp)
 target_link_libraries(test5 PUBLIC cpp-math)
+
+# Regression methdods tests
+add_executable(test6 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test6.cpp)
+target_link_libraries(test6 PUBLIC cpp-math)
