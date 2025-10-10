@@ -13,14 +13,16 @@ class CurveInterpolation
         double evaluateFirstDerivative(double x) const; 
         double evaluateSecondDerivative(double x) const; 
 
+        std::map<double, double> getInitialData() const; 
+        double getLowerBoundX() const;
+        double getUpperBoundX() const;
+
     protected: 
         virtual double _evaluate(double x) const = 0;
         virtual double _evaluateFirstDerivative(double x) const = 0; 
         virtual double _evaluateSecondDerivative(double x) const = 0; 
 
         int findIndex(double x) const;
-        double getLowerBoundX() const;
-        double getUpperBoundX() const;
         double getX(int i) const;
         double getY(int i) const;
         std::vector<double> getVectorX() const;

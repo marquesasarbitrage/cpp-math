@@ -53,6 +53,16 @@ double CurveInterpolation::getY(int i) const {return yVector_[i];};
 std::vector<double> CurveInterpolation::getVectorX() const {return xVector_;}
 std::vector<double> CurveInterpolation::getVectorY() const {return yVector_;}
 
+std::map<double, double> CurveInterpolation::getInitialData() const 
+{
+    std::map<double, double> result;
+    for (std::size_t i = 0; i < xVector_.size(); ++i) {
+        result.emplace(xVector_[i], yVector_[i]);
+    }
+
+    return result;
+}
+
 LinearInterpolation::LinearInterpolation(const std::map<double, double>& data): CurveInterpolation(data){}
 
 double LinearInterpolation::_evaluate(double x) const

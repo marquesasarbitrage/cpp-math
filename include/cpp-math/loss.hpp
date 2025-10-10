@@ -15,7 +15,6 @@ class EstimatorLoss
         Eigen::VectorXd getResiduals() const; 
         std::vector<double> getResidualsAsVector() const; 
         
-
         double getMAE() const; 
         double getMSE() const; 
         double getRMSE() const; 
@@ -23,7 +22,7 @@ class EstimatorLoss
         double getMSLE() const; 
         double getMSPE() const; 
         double getRMPSE() const;
-    
+
     private: 
         Eigen::VectorXd estimates_;
         Eigen::VectorXd trueValues_;

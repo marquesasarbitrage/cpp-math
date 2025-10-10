@@ -21,7 +21,12 @@ void test_interpolation()
     assert(linear.evaluate(1.0) == 2.0);
     assert(linear.evaluate(3.0) == 5.0);
     assert(linear.evaluate(5.0) == 11.0);
+
+    assert(linear.getInitialData() == testData);
+
     std::cout << "Linear Interpolation Tests Passed!" << std::endl;
+
+
     
     // Testing Cubic Spline Interpolation
     CubicSpline cubic(testData);
@@ -30,6 +35,7 @@ void test_interpolation()
     assert(cubic.evaluate(1.0) == 2.0);
     assert(cubic.evaluate(3.0) == 5.0);
     assert(cubic.evaluate(5.0) == 11.0);
+    assert(cubic.getInitialData() == testData);
     std::cout << "Cubic Spline Interpolation Tests Passed!" << std::endl;
     
     // Testing out-of-range handling
@@ -46,6 +52,10 @@ void test_interpolation()
     } catch (const MathErrorRegistry::CurveInterpolation::OutOfRangeCurveInterpolationError &e) {
         std::cout << e.what() << std::endl;
     }
+
+
+
+
 }
 
 int main()
