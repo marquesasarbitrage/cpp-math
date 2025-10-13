@@ -36,7 +36,13 @@ void test_interpolation()
     assert(cubic.evaluate(3.0) == 5.0);
     assert(cubic.evaluate(5.0) == 11.0);
     assert(cubic.getInitialData() == testData);
+
+    //testing cubic spline natural boundaries 
+    assert(cubic.evaluateSecondDerivative(1.0) == 0.0);
+    assert(cubic.evaluateSecondDerivative(5.0) == 0.0);
     std::cout << "Cubic Spline Interpolation Tests Passed!" << std::endl;
+
+    
     
     // Testing out-of-range handling
     try {
