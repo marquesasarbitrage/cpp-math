@@ -1,4 +1,4 @@
-#include "../../include/cpp-math/probability/sampling.hpp"
+#include "../../include/core-math/probability/sampling.hpp"
 
 RandomSampling::RandomSampling(const std::shared_ptr<ProbabilityDistribution>& dist, int N, int M): 
 executed_(false),dist_(dist), N_(std::max(std::abs(N),1)), M_(std::max(std::abs(M),1)), timeTaken_(0.0), sample_(Eigen::MatrixXd::Zero(N_,M_)) {}

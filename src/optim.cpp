@@ -1,4 +1,4 @@
-#include "../include/cpp-math/optim.hpp"
+#include "../include/core-math/optim.hpp"
 
 Optimizer::Optimizer(): optimized_(false), toleranceThreshold_(1e-9), maximumIterations_(100), timeTaken_(0.0), optimizeError(nullptr){};
 

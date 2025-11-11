@@ -1,4 +1,4 @@
-#include "../include/cpp-math/regression.hpp"
+#include "../include/core-math/regression.hpp"
 
 
 Regression::Regression(const std::vector<double>& target, const std::vector<std::vector<double>>& features): 

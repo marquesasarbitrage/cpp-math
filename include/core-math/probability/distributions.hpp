@@ -2,8 +2,8 @@
 #include <iostream>
 #include <complex>
 #include <cfloat>
-#include "tool.hpp"
-#include "../../../include/cpp-math/errors.hpp"
+#include "../../../include/core-math/errors.hpp"
+#include "../../../include/core-math/tools.hpp"
 
 class ProbabilityDistribution
 {

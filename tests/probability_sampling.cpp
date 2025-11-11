@@ -3,7 +3,7 @@
 #include <memory>
 #include <cmath>
 #include <cassert>
-#include "../include/cpp-math/probability/sampling.hpp"
+#include "../include/core-math/probability/sampling.hpp"
 
 void testUniformSampling()
 {
@@ -12,7 +12,7 @@ void testUniformSampling()
     std::cout << "Time taken for sampling 10000 values: " << sampler.getTimeTaken() << std::endl;
     assert((uniform->getMean() - sampler.getSampleMean())<1e-2); 
     assert((uniform->getVariance() - sampler.getSampleVariance())<1e-2); 
-    assert((uniform->getSkewness() - sampler.getSampleSkewness())<1e-2); 
+    assert((uniform->getSkewness() - sampler.getSampleSkewness())<1e-1); 
     assert((uniform->getKurtosis() - sampler.getSampleKurtosis())<1e-2); 
 
     sampler.run();

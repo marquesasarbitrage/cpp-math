@@ -1,4 +1,4 @@
-#include "../include/cpp-math/probability/distributions.hpp"
+#include "../include/core-math/probability/distributions.hpp"
 
 Uniform::Uniform(double a, double b): a_(a), b_(b){if (b_<=a_) throw MathErrorRegistry::Probability::InvalidUniformBoundError();}
 Uniform::Uniform(): a_(0.0), b_(1.0){}
@@ -45,16 +45,16 @@ std::complex<double> Gaussian::cf(double t) const
 double Gaussian::cdf(double x) const
 {
     double z = (x - mu_)/sigma_;
-    return GaussianTool::standardGaussianCdf(z);
+    return GaussTools::standardGaussianCdf(z);
 }
 
 double Gaussian::pdf(double x) const
 {
     double z = (x - mu_)/sigma_;
-    return GaussianTool::standardGaussianPdf(z)/sigma_;
+    return  GaussTools::standardGaussianPdf(z)/sigma_;
 }
 
 double Gaussian::quantile(double p) const
 {
-    return mu_ + sigma_ * GaussianTool::acklamStandardGaussianInverseCdf(p);
+    return mu_ + sigma_ * GaussTools::acklamStandardGaussianInverseCdf(p);
 }

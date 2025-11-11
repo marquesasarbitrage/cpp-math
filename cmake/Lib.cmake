@@ -1,5 +1,5 @@
 add_library(
-    cpp-math 
+    core-math 
     STATIC 
         src/curveinterpolation.cpp 
         src/quadratures.cpp 
@@ -7,9 +7,8 @@ add_library(
         src/errors.cpp
         src/probability/distributions.cpp
         src/probability/sampling.cpp
-        src/probability/tool.cpp
         src/loss.cpp
         src/regression.cpp
         src/tools.cpp)
-target_link_libraries(cpp-math PUBLIC Eigen3::Eigen)
-target_include_directories(cpp-math PUBLIC include)
+target_link_libraries(core-math PUBLIC Eigen3::Eigen)
+target_include_directories(core-math PUBLIC include)

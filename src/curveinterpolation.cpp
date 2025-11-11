@@ -1,4 +1,4 @@
-#include "../include/cpp-math/curveinterpolation.hpp"
+#include "../include/core-math/curveinterpolation.hpp"
 
 CurveInterpolation::CurveInterpolation(const std::map<double, double>& data){classSetter(data);}
 

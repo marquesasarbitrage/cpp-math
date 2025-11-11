@@ -1,16 +1,27 @@
-#pragma once
+#pragma once 
 #include <iostream>
+#include <vector>
 #include <cmath>
 #include <cfloat>
+#include <Eigen/Dense>
+#include "errors.hpp"
 
-namespace GaussianTool
+namespace EigenTool
+{
+    Eigen::MatrixXd getEigenMatrix(const std::vector<std::vector<double>>& data);
+
+    Eigen::VectorXd getEigenVector(const std::vector<double>& data);
+
+}
+
+namespace GaussTools
 {
 
-   // ALGORITHM AS241  APPL. STATIST. (1988) VOL. 37, NO. 3
-   //
-   // Produces the normal deviate Z corresponding to a given lower
-   // tail area of u; Z is accurate to about 1 part in 10**16.
-   // see http://lib.stat.cmu.edu/apstat/241
+// ALGORITHM AS241  APPL. STATIST. (1988) VOL. 37, NO. 3
+//
+// Produces the normal deviate Z corresponding to a given lower
+// tail area of u; Z is accurate to about 1 part in 10**16.
+// see http://lib.stat.cmu.edu/apstat/241
     double acklamStandardGaussianInverseCdf(double p); 
 
     double standardGaussianPdf(double z);
@@ -28,4 +39,3 @@ namespace GaussianTool
     // Code source from https://github.com/vollib/lets_be_rational/
     double standardGaussianCdf(double z); 
 }
-

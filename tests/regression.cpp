@@ -3,7 +3,7 @@
 #include <memory>
 #include <cmath>
 #include <cassert>
-#include "../include/cpp-math/regression.hpp"
+#include "../include/core-math/regression.hpp"
 
 void testOLS() {
 

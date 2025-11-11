@@ -3,7 +3,7 @@
 #include <cmath>
 #include <cassert>
 #include <chrono>
-#include "../include/cpp-math/quadratures.hpp"
+#include "../include/core-math/quadratures.hpp"
 
 void testGaussLaguerre() {
     // Test the computation of roots and weights

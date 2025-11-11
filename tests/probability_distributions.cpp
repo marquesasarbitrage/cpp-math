@@ -3,7 +3,7 @@
 #include <memory>
 #include <cmath>
 #include <cassert>
-#include "../include/cpp-math/probability/distributions.hpp"
+#include "../include/core-math/probability/distributions.hpp"
 
 
 void testSandardGaussian() {
@@ -64,7 +64,7 @@ void testSandardGaussian() {
 
     // Test pdf
     double pdfValue = defaultDist.pdf(0.0);
-    assert(std::abs(pdfValue - GaussianTool::ONE_OVER_SQRT_TWO_PI) < 1e-6); // pdf(0) for standard normal
+    assert(std::abs(pdfValue - GaussTools::ONE_OVER_SQRT_TWO_PI) < 1e-6); // pdf(0) for standard normal
 
     std::cout << "All tests passed for Standard Gaussian distribution!" << std::endl;
 }

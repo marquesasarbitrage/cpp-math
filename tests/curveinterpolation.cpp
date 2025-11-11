@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "../include/cpp-math/curveinterpolation.hpp"
+#include "../include/core-math/curveinterpolation.hpp"
 
 void test_interpolation()
 {

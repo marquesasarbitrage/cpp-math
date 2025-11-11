@@ -3,7 +3,7 @@
 #include <memory>
 #include <cmath>
 #include <cassert>
-#include "../include/cpp-math/optim.hpp"
+#include "../include/core-math/optim.hpp"
 
 // 🔹 Test function for Newton-Raphson: f(x) = x^2 - 4
 double testFunctionNR(double x) {

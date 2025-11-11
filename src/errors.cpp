@@ -1,4 +1,4 @@
-#include "../include/cpp-math/errors.hpp"
+#include "../include/core-math/errors.hpp"
 
 const char* MathLibraryError::what() const noexcept
 {

@@ -1,4 +1,4 @@
-#include "../include/cpp-math/quadratures.hpp"
+#include "../include/core-math/quadratures.hpp"
 
 GaussianQuadrature::GaussianQuadrature(int points): points_(std::max(2, points)), computed_(false), roots_({}), weights_({}){}; 
 

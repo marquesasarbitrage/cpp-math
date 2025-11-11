@@ -1,23 +1,17 @@
-# Interpolatiopn tests
-add_executable(test1 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test1.cpp)
-target_link_libraries(test1 PUBLIC cpp-math)
+add_executable(coremath-curveinterpolation ${CMAKE_CURRENT_SOURCE_DIR}/tests/curveinterpolation.cpp)
+target_link_libraries(coremath-curveinterpolation PUBLIC core-math)
 
-# Quadrature tests
-add_executable(test2 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test2.cpp)
-target_link_libraries(test2 PUBLIC cpp-math)
+add_executable(coremath-optim ${CMAKE_CURRENT_SOURCE_DIR}/tests/optim.cpp)
+target_link_libraries(coremath-optim PUBLIC core-math)
 
-# Optimization tests
-add_executable(test3 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test3.cpp)
-target_link_libraries(test3 PUBLIC cpp-math)
+add_executable(coremath-probability-distributions ${CMAKE_CURRENT_SOURCE_DIR}/tests/probability_distributions.cpp)
+target_link_libraries(coremath-probability-distributions PUBLIC core-math)
 
-# Probability distribution tests
-add_executable(test4 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test4.cpp)
-target_link_libraries(test4 PUBLIC cpp-math)
+add_executable(coremath-probability-sampling ${CMAKE_CURRENT_SOURCE_DIR}/tests/probability_sampling.cpp)
+target_link_libraries(coremath-probability-sampling PUBLIC core-math)
 
-# Sampling distribution tests
-add_executable(test5 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test5.cpp)
-target_link_libraries(test5 PUBLIC cpp-math)
+add_executable(coremath-quadratures ${CMAKE_CURRENT_SOURCE_DIR}/tests/quadratures.cpp)
+target_link_libraries(coremath-quadratures PUBLIC core-math)
 
-# Regression methdods tests
-add_executable(test6 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test6.cpp)
-target_link_libraries(test6 PUBLIC cpp-math)
+add_executable(coremath-regression ${CMAKE_CURRENT_SOURCE_DIR}/tests/regression.cpp)
+target_link_libraries(coremath-regression PUBLIC core-math)

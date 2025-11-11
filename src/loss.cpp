@@ -1,4 +1,4 @@
-#include "../include/cpp-math/loss.hpp"
+#include "../include/core-math/loss.hpp"
 
 EstimatorLoss::EstimatorLoss(const std::vector<double>& estimates, const std::vector<double>& trueValues): 
 estimates_(EigenTool::getEigenVector(estimates)), trueValues_(EigenTool::getEigenVector(trueValues))
