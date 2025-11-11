@@ -10,5 +10,5 @@ add_library(
         src/loss.cpp
         src/regression.cpp
         src/tools.cpp)
-target_link_libraries(core-math PRIVATE Eigen3::Eigen)
+target_link_libraries(core-math PUBLIC Eigen3::Eigen)
 target_include_directories(core-math PUBLIC include)
